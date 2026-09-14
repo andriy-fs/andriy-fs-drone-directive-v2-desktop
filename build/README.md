@@ -5,7 +5,7 @@ Two things, for two different consumers.
 ## `icon.png` — Windows and macOS
 
 The game's own drone mark: `client/assets-src/favicon.png` from
-[andriy-fs/drone-directive](https://github.com/andriy-fs/drone-directive),
+[andriy-fs/drone-directive-2](https://github.com/andriy-fs/drone-directive-2),
 resampled from 500x500 to the 1024x1024 electron-builder needs to derive the
 Windows `.ico` and macOS `.icns`. Flat vector-like shapes, so the upscale is
 clean.
@@ -38,13 +38,13 @@ this one:
 
 ```bash
 node -e "
-const sharp = require('../drone-directive/node_modules/sharp');
-sharp('../drone-directive/client/assets-src/favicon.png')
+const sharp = require('../drone-directive-2/node_modules/sharp');
+sharp('../drone-directive-2/client/assets-src/favicon.png')
   .resize(1024, 1024, { kernel: 'lanczos3' }).png({ compressionLevel: 9 })
   .toFile('build/icon.png');
 "
 node -e "
-const sharp = require('../drone-directive/node_modules/sharp');
+const sharp = require('../drone-directive-2/node_modules/sharp');
 for (const s of [16, 24, 32, 48, 64, 128, 256, 512])
   sharp('build/icon.png').resize(s, s, { kernel: 'lanczos3' })
     .png({ compressionLevel: 9 }).toFile(\`build/icons/\${s}x\${s}.png\`);

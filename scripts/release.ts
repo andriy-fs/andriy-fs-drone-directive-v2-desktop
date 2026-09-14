@@ -140,7 +140,7 @@ console.log(`  branch main, clean, ${ahead} unpushed commit(s) — they go out w
  */
 step('Checking the game build');
 
-const GAME_PACKAGE = '@andriy-fs/drone-directive-client';
+const GAME_PACKAGE = '@andriy-fs/drone-directive-2-client';
 const pinned = manifest.dependencies?.[GAME_PACKAGE];
 
 if (!pinned) fail(`${GAME_PACKAGE} is not in dependencies`);

@@ -142,7 +142,7 @@ keeping, since a cold build re-downloads ~200 MB.
 ## Running an unpacked build
 
 ```bash
-./release/linux-unpacked/drone-directive-desktop
+./release/linux-unpacked/drone-directive-2-desktop
 ```
 
 On a machine whose `chrome-sandbox` is not `root:root` mode 4755, Electron aborts

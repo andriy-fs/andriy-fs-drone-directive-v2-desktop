@@ -1,8 +1,8 @@
 import { app, dialog, Menu, shell, type MenuItemConstructorOptions } from 'electron';
 import { checkForUpdate } from './update-check.js';
 
-const REPOSITORY = 'https://github.com/andriy-fs/drone-directive';
-const DESKTOP_REPOSITORY = 'https://github.com/andriy-fs/drone-directive-desktop';
+const REPOSITORY = 'https://github.com/andriy-fs/drone-directive-2';
+const DESKTOP_REPOSITORY = 'https://github.com/andriy-fs/andriy-fs-drone-directive-v2-desktop';
 
 /**
  * A deliberately small menu. Electron's default template is written for a text
@@ -28,7 +28,7 @@ export function buildMenu(isDevelopment: boolean): void {
         `Desktop shell ${app.getVersion()}`,
         `Electron ${process.versions.electron} · Chromium ${process.versions.chrome}`,
         '',
-        'Free software under the GNU GPL v3 or later.',
+        'Copyright © 2026 Andriy-fs. All rights reserved.',
         `Game source: ${REPOSITORY}`,
         `Desktop shell source: ${DESKTOP_REPOSITORY}`,
       ].join('\n'),

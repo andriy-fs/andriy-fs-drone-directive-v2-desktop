@@ -1,7 +1,7 @@
 /**
  * Stages the published game build at `resources/game/`.
  *
- * `@andriy-fs/drone-directive-client` is a package of static assets: no entry
+ * `@andriy-fs/drone-directive-2-client` is a package of static assets: no entry
  * point, nothing to import, one `dist/` directory. This script finds it and
  * copies it, and that copy is what both `npm start` and `electron-builder` serve
  * — so the path exercised in development is the path that ships.
@@ -17,7 +17,7 @@ import { createRequire } from 'node:module';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const PACKAGE = '@andriy-fs/drone-directive-client';
+const PACKAGE = '@andriy-fs/drone-directive-2-client';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const destination = path.join(root, 'resources/game');

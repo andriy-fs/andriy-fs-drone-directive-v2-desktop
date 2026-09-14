@@ -22,7 +22,7 @@ export function assertGamePresent(root: string = gameRoot): void {
   if (!existsSync(path.join(root, 'index.html'))) {
     throw new Error(
       `No game build at ${root} (index.html missing). Run \`npm run build\`; if that fails to install ` +
-        '@andriy-fs/drone-directive-client, see README § "The game dependency".',
+        '@andriy-fs/drone-directive-2-client, see README § "The game dependency".',
     );
   }
 }

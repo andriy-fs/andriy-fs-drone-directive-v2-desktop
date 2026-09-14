@@ -1,6 +1,6 @@
 appId: com.devfront.dronedirective
 productName: Drone Directive
-copyright: Copyright © 2026 Andriy-fs. GNU GPL v3 or later.
+copyright: Copyright © 2026 Andriy-fs. All rights reserved.
 
 directories:
   output: release
@@ -25,10 +25,9 @@ asar: true
 
 # Why the game is `extraResources` and not `files`:
 #
-#  1. GPL. This app redistributes a GPL-3.0-or-later game, and its assets stay
-#     plain files the user can read, replace or extract with a file manager. An
-#     asar is not DRM, but burying somebody else's free software inside an archive
-#     is the wrong instinct for a licence built on the user's ability to get at it.
+#  1. The game is somebody else's build output, copied in verbatim. Keeping it as
+#     plain files beside `app.asar` keeps it inspectable and makes it obvious which
+#     pinned build an installer actually carries.
 #  2. Nothing is gained. asar does not compress, and 29 MB of .webp and .ogg are
 #     already compressed — packing them buys zero bytes while turning every one of
 #     ~340 asset reads per session into a read through the archive layer.
@@ -107,4 +106,4 @@ linux:
 publish:
   provider: github
   owner: andriy-fs
-  repo: drone-directive-desktop
+  repo: andriy-fs-drone-directive-v2-desktop

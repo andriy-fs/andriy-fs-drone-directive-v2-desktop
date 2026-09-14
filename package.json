@@ -1,18 +1,18 @@
 {
-  "name": "drone-directive-desktop",
+  "name": "drone-directive-2-desktop",
   "version": "0.2.11",
   "private": true,
   "description": "Drone Directive as an offline desktop app — an Electron shell around the published browser build.",
-  "license": "GPL-3.0-or-later",
+  "license": "UNLICENSED",
   "author": {
     "name": "Andriy-fs",
     "email": "4tests.pl@gmail.com"
   },
-  "desktopName": "drone-directive-desktop.desktop",
-  "homepage": "https://github.com/andriy-fs/drone-directive-desktop",
+  "desktopName": "drone-directive-2-desktop.desktop",
+  "homepage": "https://github.com/andriy-fs/andriy-fs-drone-directive-v2-desktop",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/andriy-fs/drone-directive-desktop.git"
+    "url": "git+https://github.com/andriy-fs/andriy-fs-drone-directive-v2-desktop.git"
   },
   "type": "module",
   "main": "out/src/main/index.js",
@@ -23,7 +23,7 @@
     "dist:dir": "npm run build && electron-builder --config electron-builder.yml --dir",
     "smoke": "npm run build && electron --no-sandbox out/scripts/smoke.js",
     "release": "npm run build && node out/scripts/release.js",
-    "game:update": "npm install @andriy-fs/drone-directive-client@latest --save-exact && npm run smoke",
+    "game:update": "npm install @andriy-fs/drone-directive-2-client@latest --save-exact && npm run smoke",
     "lint": "eslint .",
     "type-check": "tsc --noEmit",
     "format": "prettier --write .",
@@ -31,7 +31,7 @@
     "clean": "node --eval \"fs.rmSync('out',{recursive:true,force:true});fs.rmSync('resources',{recursive:true,force:true});fs.rmSync('release',{recursive:true,force:true})\""
   },
   "dependencies": {
-    "@andriy-fs/drone-directive-client": "1.2.16"
+    "@andriy-fs/drone-directive-2-client": "2.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

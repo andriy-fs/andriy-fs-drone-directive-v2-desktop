@@ -1,7 +1,7 @@
 # Drone Directive — desktop
 
 An [Electron](https://www.electronjs.org/) shell that ships
-[**Drone Directive**](https://github.com/andriy-fs/drone-directive) — a browser
+[**Drone Directive**](https://github.com/andriy-fs/drone-directive-2) — a browser
 RTS built with React 19 and PixiJS 8 — as an offline desktop application for
 Windows, macOS and Linux.
 
@@ -23,7 +23,7 @@ electron-builder.yml
 
 ```json
 "dependencies": {
-  "@andriy-fs/drone-directive-client": "1.0.0"
+  "@andriy-fs/drone-directive-2-client": "1.0.0"
 }
 ```
 
@@ -34,19 +34,19 @@ it was actually tested against. Upgrading is a deliberate one-line PR.
 The package is a bundle of static assets: no entry point, nothing to `import`,
 one directory (`dist/`) holding `index.html`, hashed JS/CSS, `.webp` sprites,
 `sounds/*.ogg` and favicons. `scripts/copy-game.ts` resolves it through
-`require.resolve('@andriy-fs/drone-directive-client/package.json')` — never a
+`require.resolve('@andriy-fs/drone-directive-2-client/package.json')` — never a
 hardcoded `node_modules` path — and copies `dist/` to `resources/game/`.
 
 The multiplayer relay hostname is baked into the bundle at publish time. This
 shell neither configures nor overrides it.
 
-> **The package must exist first.** `@andriy-fs/drone-directive-client@1.0.0` is
+> **The package must exist first.** `@andriy-fs/drone-directive-2-client@1.0.0` is
 > published by the game repository's `publish-client.yml`, which runs on a `v*`
 > tag — and only on a tag. If `npm install` reports a 404 with a valid token,
 > check that the tag was actually pushed:
 >
 > ```bash
-> cd ../drone-directive && git push origin v1.0.0
+> cd ../drone-directive-2 && git push origin v1.0.0
 > ```
 
 ### `NODE_AUTH_TOKEN` — read this before your first `npm install`
@@ -139,8 +139,8 @@ which is stated here rather than left to be discovered.
 Turn it off with a launch flag, or the environment variable of the same meaning:
 
 ```bash
-drone-directive-desktop --no-update-check
-DD_NO_UPDATE_CHECK=1 drone-directive-desktop
+drone-directive-2-desktop --no-update-check
+DD_NO_UPDATE_CHECK=1 drone-directive-2-desktop
 ```
 
 With it off, and until you go online in a multiplayer match, the app makes no
@@ -201,10 +201,9 @@ handed to `shell.openExternal`, which is given `http(s)` URLs only.
 `asar: true` applies to the shell's own code; the game goes in as
 `extraResources`, landing at `resources/game/` beside `app.asar`. Three reasons:
 
-1. **Licence.** This app redistributes GPL-3.0-or-later software. Its assets stay
-   plain files the user can read, replace or extract with a file manager. An asar
-   is not DRM, but burying someone else's free software in an archive is the
-   wrong instinct for a licence built on the user's ability to get at it.
+1. **It is not this repository's code.** The game is a pinned build copied in
+   verbatim; as plain files beside `app.asar` it stays inspectable, and it is
+   obvious which build an installer actually carries.
 2. **Nothing is gained.** asar does not compress, and 29 MB of `.webp` and `.ogg`
    are already compressed — packing them saves zero bytes while routing every one
    of ~340 asset reads per session through the archive layer.
@@ -295,9 +294,5 @@ an unsigned code path that runs without the user looking at it.
 
 ## Licence
 
-GPL-3.0-or-later — see [`LICENSE`](LICENSE).
-
-This application bundles a build of **Drone Directive**, which is also
-GPL-3.0-or-later. Its complete corresponding source is at
-<https://github.com/andriy-fs/drone-directive>; the source for this shell is the
-repository you are reading.
+Proprietary. Copyright © 2026 Andriy-fs. All rights reserved — see
+[`LICENSE`](LICENSE).

@@ -1,7 +1,7 @@
 ---
 name: dd-desktop-conventions
 description: >-
-  Writing conventions for andriy-fs/drone-directive-desktop: the language every
+  Writing conventions for andriy-fs/andriy-fs-drone-directive-v2-desktop: the language every
   artefact is written in, and the shape of a commit message. Use before writing
   or amending any commit message, and before writing or editing README.md,
   CLAUDE.md, code comments, workflow comments or any other prose in this
@@ -22,9 +22,8 @@ This holds **regardless of the language being spoken to you.** A conversation in
 Russian, Ukrainian or Polish still produces English commits and English
 comments. Reply to the user in their language; write the repository in English.
 
-The reason is reach, not preference: the game is GPL-3.0-or-later and its source
-is public, so the people who read this repository are not the people who wrote
-it. A comment explaining why PixiJS forces `'unsafe-eval'` is worthless to a
+The reason is reach, not preference: the people who read this repository are not
+necessarily the people who wrote it. A comment explaining why PixiJS forces `'unsafe-eval'` is worthless to a
 contributor who cannot read it.
 
 ## 2. A commit message is one line

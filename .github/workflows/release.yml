@@ -3,7 +3,7 @@
 #
 # Only on a tag. `main` moves whenever the shell changes; a release is a
 # deliberate act, and each one pins one version of the game (package.json →
-# @andriy-fs/drone-directive-client).
+# @andriy-fs/drone-directive-2-client).
 name: release
 
 on:

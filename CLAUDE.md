@@ -1,13 +1,13 @@
 # Drone Directive — desktop
 
-An **Electron** shell that ships [Drone Directive](https://github.com/andriy-fs/drone-directive)
+An **Electron** shell that ships [Drone Directive](https://github.com/andriy-fs/drone-directive-2)
 — a React 19 + PixiJS 8 browser RTS — as an offline desktop app for Windows,
 macOS and Linux.
 
 This repository is the **wrapper only**. No game code is written, forked, patched
 or vendored here: the game arrives prebuilt inside a version-pinned npm
 dependency and is copied into the bundle verbatim. Anything that would require
-editing the game belongs in `andriy-fs/drone-directive`, not here.
+editing the game belongs in `andriy-fs/drone-directive-2`, not here.
 
 ## Layout
 

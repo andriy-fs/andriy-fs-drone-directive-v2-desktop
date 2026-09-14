@@ -34,7 +34,7 @@ const TIMEOUT_MS = 5000;
  */
 const STARTUP_DELAY_MS = 10_000;
 
-const RELEASES_FALLBACK = 'https://github.com/andriy-fs/drone-directive-desktop/releases/latest';
+const RELEASES_FALLBACK = 'https://github.com/andriy-fs/andriy-fs-drone-directive-v2-desktop/releases/latest';
 
 interface LatestRelease {
   latest: string;

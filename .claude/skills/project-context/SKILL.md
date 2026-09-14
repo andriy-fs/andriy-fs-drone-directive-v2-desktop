@@ -1,7 +1,7 @@
 ---
 name: project-context
 description: >-
-  Hard-won context for andriy-fs/drone-directive-desktop that is not visible in
+  Hard-won context for andriy-fs/andriy-fs-drone-directive-v2-desktop that is not visible in
   the code: decisions that look like mistakes until you know why, traps in the
   local toolchain that produce misleading errors, and the parts of the publish
   chain that live in another repository. Load at the start of any session that
@@ -133,8 +133,8 @@ the exact commands.
 
 ## The publish chain lives in another repository
 
-`@andriy-fs/drone-directive-client` is built and published by
-`andriy-fs/drone-directive`, on a `v*` tag only. Consequences:
+`@andriy-fs/drone-directive-2-client` is built and published by
+`andriy-fs/drone-directive-2`, on a `v*` tag only. Consequences:
 
 - **A valid token and a 404 means the package was never published**, not that
   auth failed. GitHub Packages answers 404 rather than 401, so the two look
