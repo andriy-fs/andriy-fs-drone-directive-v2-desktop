@@ -1,6 +1,6 @@
 {
   "name": "drone-directive-2-desktop",
-  "version": "0.2.15",
+  "version": "0.2.16",
   "private": true,
   "description": "Drone Directive as an offline desktop app — an Electron shell around the published browser build.",
   "license": "UNLICENSED",
