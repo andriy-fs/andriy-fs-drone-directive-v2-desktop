@@ -74,7 +74,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     # An upload that stalls must fail the job, not hold a runner for six hours.
-    timeout-minutes: 30
+    timeout-minutes: 60
     steps:
       - uses: actions/download-artifact@v8
         with:
@@ -99,9 +99,17 @@ jobs:
             (right-click → Open, or System Settings → Privacy & Security → Open
             Anyway); Windows SmartScreen will warn (More info → Run anyway).
             Signing is tracked as an issue.
+        # One file per `gh` call, each under its own timeout, so a stalled upload
+        # names itself in the log instead of hanging the step silently. The release
+        # stays a draft until every file is in, so nobody downloads half of it.
         run: |
-          if gh release view "$TAG" > /dev/null 2>&1; then
-            gh release upload "$TAG" installers/* --clobber
-          else
-            gh release create "$TAG" installers/* --verify-tag --generate-notes --notes "$BODY"
+          ls -la installers
+          if ! gh release view "$TAG" > /dev/null 2>&1; then
+            gh release create "$TAG" --draft --verify-tag --generate-notes --notes "$BODY"
           fi
+          for f in installers/*; do
+            echo "$(date +%T) uploading $f"
+            timeout 10m gh release upload "$TAG" "$f" --clobber
+            echo "$(date +%T) done"
+          done
+          gh release edit "$TAG" --draft=false
