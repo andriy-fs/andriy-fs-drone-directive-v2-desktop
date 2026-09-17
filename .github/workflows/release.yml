@@ -73,21 +73,35 @@ jobs:
   release:
     needs: build
     runs-on: ubuntu-latest
+    # An upload that stalls must fail the job, not hold a runner for six hours.
+    timeout-minutes: 30
     steps:
       - uses: actions/download-artifact@v8
         with:
           path: installers
           merge-multiple: true
 
-      - uses: softprops/action-gh-release@v3
-        with:
-          files: installers/*
-          draft: false
-          generate_release_notes: true
-          body: |
+      # The `gh` CLI preinstalled on the runner, not softprops/action-gh-release:
+      # its v3 uploads assets in parallel and, for v0.4.0, hung indefinitely on the
+      # .deb, .AppImage and both .exe files — on the first run and on every re-run.
+      # `gh` uploads one file at a time. Create-or-upload keeps a re-run of a
+      # half-published release idempotent: `--clobber` replaces what is already
+      # there.
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ github.ref_name }}
+          BODY: |
             ### Unsigned builds
 
             These binaries are not code-signed. macOS will refuse the first launch
             (right-click → Open, or System Settings → Privacy & Security → Open
             Anyway); Windows SmartScreen will warn (More info → Run anyway).
             Signing is tracked as an issue.
+        run: |
+          if gh release view "$TAG" > /dev/null 2>&1; then
+            gh release upload "$TAG" installers/* --clobber
+          else
+            gh release create "$TAG" installers/* --verify-tag --generate-notes --notes "$BODY"
+          fi
