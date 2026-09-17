@@ -107,9 +107,17 @@ jobs:
           if ! gh release view "$TAG" > /dev/null 2>&1; then
             gh release create "$TAG" --draft --verify-tag --generate-notes --notes "$BODY"
           fi
+          # A failure does not stop the loop (the step runs under `bash -e`): one
+          # stalled file must not hide how the others behave.
+          failed=0
           for f in installers/*; do
             echo "$(date +%T) uploading $f"
-            timeout 10m gh release upload "$TAG" "$f" --clobber
-            echo "$(date +%T) done"
+            if timeout 10m gh release upload "$TAG" "$f" --clobber; then
+              echo "$(date +%T) done"
+            else
+              echo "::error::$(date +%T) upload failed or timed out: $f"
+              failed=1
+            fi
           done
+          [ "$failed" = 0 ]
           gh release edit "$TAG" --draft=false
